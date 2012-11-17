@@ -1,0 +1,6 @@
+Instantní algoritmy
+
+Chtěl bych vytvořit svou osobní příručku k programátorským soutěžím.
+Knihovna - popis, o co se jedná
+
+Zdroje, modifikace, cíle
