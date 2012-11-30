@@ -1,4 +1,3 @@
-/fpejrwpifpwgpi/TODO srovnat s codeforces, team reference
 #include<cstdio>
 #include<cstdlib>
 #include<cstring>
@@ -7,8 +6,9 @@
 #include<vector>
 #include<list>
 #include<map>
+#include<set>
 
-using namespace std
+using namespace std;
 
 #define FOR(i,N) for (int i = 0; i < (N); i++)
 #define FORI(i, a, b) for (int i = (a); i < (b); i++)
