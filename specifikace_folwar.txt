@@ -1,5 +1,11 @@
 Instantní algoritmy
 
-Osobní sbírka soutěžních algoritmů. To znamená kódů napsaných v C++ s využitím STL pro situace, kdy člověk ví, jak daný algoritmus funguje, ale nechce trávit čas vymýšlením detailů, místo toho potřebuje přehledný kód, který zkopíruje/přepíše a rychle upraví pro aktuálně řešený problém. Výsledkem bude i použitelná knihovna, ale především množina C++ kódů a rozumně vysázené PDF s kódy pro vytištění, neb při soutěžích člověk může použít právě jen STL.
+Osobní sbírka soutěžních algoritmů. To znamená kódů napsaných v C++ s využitím STL pro situace, kdy
+člověk ví, jak daný algoritmus funguje, ale nechce trávit čas vymýšlením detailů, místo toho
+potřebuje přehledný kód, který zkopíruje/přepíše a rychle upraví pro aktuálně řešený problém.
+Výsledkem bude i použitelná knihovna, ale především množina C++ kódů a rozumně vysázené PDF s kódy
+pro vytištění, neb při soutěžích člověk může použít právě jen STL.
 
-Nezačínám úplně od nuly, trochu využiji kódy, které už teď v chaotické formě mám, ale těžištěm práce by měly být algoritmy, které jsem nikdy nepsal (např. Aho-Corasick). Plánuji výsledek zveřejnit, takže doufám, že výtvor někdy poslouží i někomu kromě mne.
+Nezačínám úplně od nuly, trochu využiji kódy, které už teď v chaotické formě mám, ale těžištěm práce
+by měly být algoritmy, které jsem nikdy nepsal (např. Aho-Corasick). Plánuji výsledek zveřejnit,
+takže doufám, že výtvor někdy poslouží i někomu kromě mne.
