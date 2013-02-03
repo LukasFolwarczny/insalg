@@ -7,6 +7,7 @@
 #include<list>
 #include<map>
 #include<set>
+#include<stack>
 
 using namespace std;
 
