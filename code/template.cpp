@@ -17,6 +17,6 @@ using namespace std;
 
 typedef long long ll;		
 
-int main() {
+int main2() {
 	return 0;
 }
