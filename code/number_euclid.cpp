@@ -1,4 +1,6 @@
 #include "template.cpp"
+// Lukas Folwarczny, 2013
+// http://atrey.karlin.mff.cuni.cz/~folwar/insalg/
 
 int euclid(int a, int b) {
 	int t;
@@ -10,7 +12,7 @@ int euclid(int a, int b) {
 	return a;
 }
 
-//gcd = a * x + b * y
+//GCD = a * x + b * y
 int euclid_extended(int a, int b, int &x, int &y) {
 	if (b == 0) {
 		x = 1; y = 0;
@@ -22,3 +24,18 @@ int euclid_extended(int a, int b, int &x, int &y) {
 	y = xx - (a/b) * yy;
 	return gcd;
 }
+
+void example() {
+	printf("GCD(22031993, 2203) = %d\n", euclid(22031993,2203));
+	printf("GCD(332024, 224224) = %d\n", euclid(332024, 224224));
+	int a = 13, b = 17, x, y;
+	int gcd = euclid_extended(a, b, x, y);
+	printf("%d = %d * %d + %d * %d\n", gcd, a, x, b, y);
+
+	a = 8, b = 24;
+	gcd = euclid_extended(a, b, x, y);
+	printf("%d = %d * %d + %d * %d\n", gcd, a, x, b, y);
+
+}
+
+int main() { example(); return 0; }

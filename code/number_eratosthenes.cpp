@@ -1,11 +1,12 @@
 #include "template.cpp"
-
 #define MaxN 100000
+// Lukas Folwarczny, 2013
+// http://atrey.karlin.mff.cuni.cz/~folwar/insalg/
 
 char prime[MaxN+1];
 
-//primes from [1..N]
-void erasthotenes(int N) {
+//Primes less than N
+void eratosthenes(int N) {
 	FORI(i,2,N) prime[i] = 1;
 	
 	FORI(i,2,N) {
@@ -16,3 +17,13 @@ void erasthotenes(int N) {
 	}
 }
 
+void example() {
+	eratosthenes(10000);
+	printf("First 1000 prime numbers:\n");
+	int j = 0;
+	for (int i = 2; j < 1000; i++) {
+		if (prime[i]) { j++; printf("%d ", i); }
+	}
+}
+
+int main() { example(); return 0; }
