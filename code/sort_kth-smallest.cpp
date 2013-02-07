@@ -1,18 +1,28 @@
 #include "template.cpp"
+// Lukas Folwarczny, 2013
+// http://atrey.karlin.mff.cuni.cz/~folwar/insalg/
 
+//Finds kth smallest (zero-based) element in given sequence
+//using the Median of Medians algorithm
+//Time complexity: O(N)
+
+//Return position of the pivot after rearrangement
 int rearrange(int l, int r, int pivot, int* seq) {
-	int p_pos = l, bound = l;
-	while (seq[p_pos] != pivot) p_pos++;
-	swap(seq[p_pos], seq[l]);
+	int pivot_pos = l, bound = l;
+	while (seq[pivot_pos] != pivot) pivot_pos++;
+	swap(seq[pivot_pos], seq[l]);
 
 	for (int i = l + 1; i < r; i++) {
 		if (seq[i] < seq[l]) {
 			swap(seq[i], seq[++bound]);
 		}
 	}
+	swap(seq[l], seq[bound]);
 	return bound;
 }
 
+//k-th smallest element from seq[0] to seq[r-1]
+//seq WILL BE REARRANGED
 int kth(int l, int r, int k, int* seq) {
 	if (r - l <= 1) return seq[l];
 	if (r - l < 5) {
@@ -37,9 +47,9 @@ int kth(int l, int r, int k, int* seq) {
 
 }
 
-int main() {
+void example() {
 	int pole[] = {1,6,1,2,3,8,11,10,87,12,13,14,15,17,18,19,23};
+	
 	FOR(i,17) printf("%d\n", kth(0,17,i,pole));
-	return 0;
-
 }
+int main() { example(); return 0; }
