@@ -1,5 +1,9 @@
 #include "template.cpp"
+// Lukas Folwarczny, 2013
+// http://atrey.karlin.mff.cuni.cz/~folwar/insalg/
 
+//Maximum array, maximum query in O(1) time
+//Make procedure O(N log N) time & space
 
 int* max_array[30];
 int log_table[100000];
@@ -35,16 +39,13 @@ void make(int length, int* sequence) {
 	}
 }
 
-int main() {
-	int v;
-	while(true) { scanf("%d", &v);
-	v |= v >> 1;
-	v |= v >> 2;
-	v |= v >> 4;
-	v |= v >> 8;
-	v |= v >> 16;
-	v++;
-	v >>= 1;
-	printf("%d\n", v); 
-	}
+void example() {
+	int s[] = {2,3,1,2,2,10,11,-2,9,10};
+	int N = 10;
+	FOR(i,N) printf("%d ", s[i]);
+	printf("\n");
+	make(N, s);
+	FOR(i,N) FORI(j,i,N+1) 	printf("max [%d,%d):%d\n", i, j, maximum(i,j));
 }
+
+int main() { example(); return 0; }

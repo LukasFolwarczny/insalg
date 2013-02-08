@@ -1,4 +1,6 @@
 #include "template.cpp"
+// Lukas Folwarczny, 2013
+// http://atrey.karlin.mff.cuni.cz/~folwar/insalg/
 
 int N, fenwick[100001];
 
@@ -28,11 +30,7 @@ void example() {
 	add(5, 12);
 	add(2, 2);
 	add(2, 3);
-	printf("%d\n", prefix_sum(0));
-	printf("%d\n", prefix_sum(1));
-	printf("%d\n", prefix_sum(2));
-	printf("%d\n", prefix_sum(3));
-	printf("%d\n", prefix_sum(4));
+	FOR(i,7) printf("sum [0,..,%d]: %d\n", i-1, prefix_sum(i));
 }
 
 int main() { example(); return 0; }
