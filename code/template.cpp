@@ -24,7 +24,3 @@ using namespace std;
 
 
 typedef long long ll;		
-int main() {
-	DP("test %d %s", 1, "neco");
-	return 0;
-}
