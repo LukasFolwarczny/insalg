@@ -3,16 +3,18 @@
 // http://atrey.karlin.mff.cuni.cz/~folwar/insalg/
 
 // Constructs the bijection between permutations of the length N
-// and {0,...,N-1}. Pemutations are ordered lexicographically.
+// and {0,...,N!-1}. Pemutations are ordered lexicographically.
+// Time complexity: O(N^2)
 
 long long F[14]; // factorial
-int T[14];
+int T[14]; // tmp
 
-void init(int N) {
+void init() {
 	F[0] = 1LL;
-	for (int i = 1; i <= N; i++) F[i] = i*F[i-1];
+	for (int i = 1; i <= 13; i++) F[i] = i*F[i-1];
 }
 
+// Return number of permutation P.
 long long permutation_to_integer(int N, int *P) {
 	long long V = 0;
 	FOR(i,N) {
@@ -39,17 +41,30 @@ int* integer_to_permutation(int N, long long V) {
 	return out;
 }
 
-int main() {
-	init(14);
+// DEMO
+void permutation_demo() {
+	init();
 	int P[14];
-	int a, b;
-	scanf("%d%d", &a, &b);
-	int* v = integer_to_permutation(a, b);
-	for (int i = 0; i < a; i++)
-	printf("%d ", v[i]);
-	scanf("%d", &a);
-	FOR(i,a)
-	scanf("%d", &P[i]);
-	printf("%lld\n", permutation_to_integer(a, P));
-	return 0;
+	int N, V;
+	printf("--- Integer to permutation ---\n");
+	printf("Length of the permutation: ");
+	scanf("%d", &N);
+	printf("Number of the permutation you want: ");
+	scanf("%d", &V);
+
+	int* v = integer_to_permutation(N, V);
+	FOR(i,N)
+		printf("%d ", v[i]);
+	
+	printf("\n--- Permutation to integer ---\n"
+	"Input the length of the permutation: ");
+	scanf("%d", &N);
+	printf("The permutation: ");
+	FOR(i,N)
+		scanf("%d", &P[i]);
+	printf("%lld\n", permutation_to_integer(N, P));
 }
+
+#ifdef RUNDEMO
+int main() { permutation_demo(); return 0; }
+#endif
