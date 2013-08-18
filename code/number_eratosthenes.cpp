@@ -1,23 +1,24 @@
 #include "template.cpp"
-#define MaxN 100000
 // Lukas Folwarczny, 2013
 // http://atrey.karlin.mff.cuni.cz/~folwar/insalg/
 
-char prime[MaxN+1];
+char *prime;
 
-//Primes less than N
+// Find all primes less than N
+// Result is in the array prime, x is prime iff prime[x] == 1
 void eratosthenes(int N) {
+	prime = (char*)calloc(N, sizeof(char));
 	FORI(i,2,N) prime[i] = 1;
-	
 	FORI(i,2,N) {
 		if (prime[i]) {
-			for (int j = i * 2; j <= N; j += i)
+			for (int j = i * 2; j < N; j += i)
 				prime[j] = 0;
 		}
 	}
 }
 
-void example() {
+// DEMO
+void eratosthenes_demo() {
 	eratosthenes(10000);
 	printf("First 1000 prime numbers:\n");
 	int j = 0;
@@ -26,4 +27,6 @@ void example() {
 	}
 }
 
-int main() { example(); return 0; }
+#ifdef RUNDEMO
+int main() { eratosthenes_demo(); return 0; }
+#endif

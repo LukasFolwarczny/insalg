@@ -25,7 +25,8 @@ int euclid_extended(int a, int b, int &x, int &y) {
 	return gcd;
 }
 
-void example() {
+// DEMO
+void euclid_demo() {
 	printf("GCD(22031993, 2203) = %d\n", euclid(22031993,2203));
 	printf("GCD(332024, 224224) = %d\n", euclid(332024, 224224));
 	int a = 13, b = 17, x, y;
@@ -38,4 +39,6 @@ void example() {
 
 }
 
-int main() { example(); return 0; }
+#ifdef RUNDEMO
+int main() { euclid_demo(); return 0; }
+#endif
