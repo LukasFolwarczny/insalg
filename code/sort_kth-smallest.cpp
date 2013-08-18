@@ -2,54 +2,59 @@
 // Lukas Folwarczny, 2013
 // http://atrey.karlin.mff.cuni.cz/~folwar/insalg/
 
-//Finds kth smallest (zero-based) element in given sequence
-//using the Median of Medians algorithm
-//Time complexity: O(N)
+// Finds kth smallest (zero-based) element in given sequence
+// using the Median of Medians algorithm
+// Time complexity: O(N)
 
-//Return position of the pivot after rearrangement
-int rearrange(int l, int r, int pivot, int* seq) {
+// Permutes the array on positions array[l] to array[r-1] with the
+// pivot
+// Return position of the pivot after rearrangement
+int rearrange(int* array, int l, int r, int pivot) {
 	int pivot_pos = l, bound = l;
-	while (seq[pivot_pos] != pivot) pivot_pos++;
-	swap(seq[pivot_pos], seq[l]);
+	while (array[pivot_pos] != pivot) pivot_pos++;
+	swap(array[pivot_pos], array[l]);
 
-	for (int i = l + 1; i < r; i++) {
-		if (seq[i] < seq[l]) {
-			swap(seq[i], seq[++bound]);
+	FORI(i,l+1,r) {
+		if (array[i] < array[l]) {
+			swap(array[i], array[++bound]);
 		}
 	}
-	swap(seq[l], seq[bound]);
+	swap(array[l], array[bound]);
 	return bound;
 }
 
-//k-th smallest element from seq[0] to seq[r-1]
-//seq WILL BE REARRANGED
-int kth(int l, int r, int k, int* seq) {
-	if (r - l <= 1) return seq[l];
+// Return k-th smallest element from array[l] to array[r-1]
+// array WILL BE REARRANGED
+int kth(int *array, int l, int r, int k) {
+	if (r - l <= 1) return array[l];
 	if (r - l < 5) {
-		sort(seq+l, seq+r);
-		return seq[k];
+		sort(array+l, array+r);
+		return array[k];
 	}
 	else {
 		int* med = (int*)malloc(sizeof(int)*(r-l));
 		int q = 0;
 		for (int i = l; i + 5 <= r; i += 5) {
-			sort(seq+i, seq+i+5);
-			med[q++] = seq[i+2];
+			sort(array+i, array+i+5);
+			med[q++] = array[i+2];
 		}
-		int m = kth(0, q, q / 2, med);
+		int m = kth(med, 0, q, q / 2);
 
-		int x = rearrange(l, r, m, seq);
+		int x = rearrange(array, l, r, m);
 
 		if (k == x) return m;
-		if (k < x) return kth(l, x, k, seq);
-		return kth(x + 1, r, k, seq); 
+		if (k < x) return kth(array, l, x, k);
+		return kth(array, x + 1, r, k); 
 	}
 
 }
 
-void example() {
-	int pole[] = {1,6,1,2,3,8,11,10,87,12,13,14,15,17,18,19,23};
-	
-	FOR(i,17) printf("%d\n", kth(0,17,i,pole));
+// DEMO
+void kth_demo() {
+	int array[] = {1,6,1,2,3,8,11,10,87,12,13,14,15,17,18,19,23};
+	FOR(i,17) printf("%d\n", kth(array, 0, 17, i));
 }
-int main() { example(); return 0; }
+
+#ifdef RUNDEMO
+int main() { kth_demo(); return 0; }
+#endif
