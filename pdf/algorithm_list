@@ -1,0 +1,40 @@
+section:Template
+template.cpp
+section:Geometry
+subsection:Geometric median
+geometry-geometric_median.cpp
+section:Number
+subsection:Eratosthenes
+number-eratosthenes.cpp
+subsection:Euclid
+number-euclid.cpp
+section:Sort
+subsection:$k$-th smallest
+sort-kth_smallest.cpp
+subsection:Quicksort
+sort-quicksort.cpp
+section:Permutation bijection
+permutation-bijection.cpp
+section:Binary heap
+heap-binary.cpp
+section:Interval
+subsection:Fenwick
+interval-fenwick.cpp
+subsection:Max array
+interval-max_array.cpp
+subsection:Max tree
+interval-max_tree.cpp
+section String
+subsection:Aho-Corasick
+string-aho_corasick.cpp
+subsection:Knuth-Morris-Pratt
+string-kmp.cpp
+subsection:Lexicographically minimal rotation
+string-minlexrot.cpp
+subsection:Suffix array
+string_suffix-array.cpp
+section:Graph
+subsection:DFS
+graph-dfs.cpp
+subsection:Tarjan
+graph-tarjan_scc.cpp
