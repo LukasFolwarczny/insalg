@@ -1,12 +1,13 @@
 #include "template.cpp"
-#define MaxN 100000
 // Lukas Folwarczny, 2013
 // http://atrey.karlin.mff.cuni.cz/~folwar/insalg/
 
-//Binary heap over N elements, 0..(N-1)
-//Sons of i: 2*i+1, 2*i+2
-//Father of i: (i-1)/2
-//Time complexity: make O(N), other O(log N)
+// Binary minimum heap over N elements, 0..(N-1)
+// Sons of i: 2*i+1, 2*i+2
+// Father of i: (i-1)/2
+// Time complexity: make O(N), other O(log N)
+
+#define MaxN 100000 // max number of elements
 int heap[MaxN], N;
 
 int get_min() {
@@ -52,7 +53,7 @@ void make(int* array, int length) {
 	}
 }
 
-void example() {
+void binary_heap_demo() {
 	int array[] = {4,2,3,-1,0,3,7,11};
 	make(array, 8);
 	delete_min();
@@ -65,4 +66,6 @@ void example() {
 	}
 }
 
-int main() { example(); return 0; }
+#ifdef RUNDEMO
+int main() { binary_heap_demo(); return 0; }
+#endif
