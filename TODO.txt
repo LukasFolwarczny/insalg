@@ -1,4 +1,0 @@
-geometrie - obecné funkce, convex hull
-stringy - aho-corasick
-grafy - LCA, možná nejkratší cesty
-teorie čísel - Euklid, Erasthotenes
