@@ -2,6 +2,7 @@
 // Lukas Folwarczny, 2013
 // http://atrey.karlin.mff.cuni.cz/~folwar/insalg/
 
+/*pdf*/
 int N, fenwick[100001];
 
 void add(int position, int value) {
@@ -21,6 +22,7 @@ int prefix_sum(int position) {
 	}
 	return out;
 }
+/*pdf*/
 
 void example() {
 	N = 100;

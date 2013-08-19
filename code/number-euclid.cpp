@@ -2,6 +2,7 @@
 // Lukas Folwarczny, 2013
 // http://atrey.karlin.mff.cuni.cz/~folwar/insalg/
 
+/*pdf*/
 int euclid(int a, int b) {
 	int t;
 	while (b != 0)  {
@@ -24,6 +25,7 @@ int euclid_extended(int a, int b, int &x, int &y) {
 	y = xx - (a/b) * yy;
 	return gcd;
 }
+/*pdf*/
 
 // DEMO
 void euclid_demo() {

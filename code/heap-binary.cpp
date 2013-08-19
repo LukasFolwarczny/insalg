@@ -8,6 +8,7 @@
 // Time complexity: make O(N), other O(log N)
 
 #define MaxN 100000 // max number of elements
+/*pdf*/
 int heap[MaxN], N;
 
 int get_min() {
@@ -52,6 +53,7 @@ void make(int* array, int length) {
 		bubble_down(p);
 	}
 }
+/*pdf*/
 
 void binary_heap_demo() {
 	int array[] = {4,2,3,-1,0,3,7,11};

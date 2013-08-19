@@ -18,6 +18,7 @@ void build_trie() {
 
 }
 
+/*pdf*/
 //a-z
 void build(int words_count, char words[][WordLen]) {
 	N = words_count;
@@ -114,9 +115,8 @@ void search(char* text) {
 
 		}
 	}
-
-
 }
+/*pdf*/
 
 int main() {
 	

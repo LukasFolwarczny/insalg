@@ -15,6 +15,7 @@ void dfs(int v);
 // vis[v] determines whether v was visited
 // in[v] - time of arrival to v
 // out[v] - time of departure from v
+/*pdf*/
 void dfs_graph() {
 	FOR(i,N)
 		if (!vis[i]) dfs(i);
@@ -29,6 +30,7 @@ void dfs(int v) {
 	}
 	out[v] = T++;	
 }
+/*pdf*/
 
 void dfs_demo() {
 	N = 9;

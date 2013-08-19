@@ -28,6 +28,7 @@ char St(int index) {
 // These three new lines detect a smaller rotation and adjust k
 // properly
 
+/*pdf*/
 int step(int i, char c) {
 	if (St(k+i+1) == c) {
 		return i+1;
@@ -51,27 +52,12 @@ int minlexrot(char S[]) {
 	F[0] = -1;
 	k = 0;
 	for (j = 1; j < 2*N; j++) {
-		if (j - k >= N) return k;//
+		if (j - k >= N) return k;
 		F[j-k] = step(F[j-k-1], St(j));
-		/*int i = F[j-k-1];
-		while (i != -1 && St(j) != St(k+i+1)) {
-			if (St(j) < St(k+i+1)) //
-				k = j-i-1;    //
-
-			i = F[i];
-		}
-		if (i == -1 && St(j) != St(k+i+1)) {
-			if (St(j) < St(k+i+1))//
-				k = j;//
-			F[j-k] = -1;
-		}
-		else
-			F[j-k] = i + 1;*/
-		
 	}
-
 	free(F);
 }
+/*pdf*/
 
 // DEMO
 

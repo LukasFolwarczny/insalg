@@ -16,6 +16,7 @@ void scc(int v);
 // Same notation as in graph_dfs
 // Time complexity: O(|V|+|E|)
 // Output: Vertex v is part of SCC comp[v]
+/*pdf*/
 void find_sccs() {
 	FOR(i,N) {
 		if (!vis[i]) scc(i);
@@ -50,6 +51,7 @@ void scc(int v) {
 	}
 	out[v] = T++;	
 }
+/*pdf*/
 
 void tarjan_scc_demo() {
 	N = 7;

@@ -5,6 +5,7 @@
 //Maximum array, maximum query in O(1) time
 //Make procedure O(N log N) time & space
 
+/*pdf*/
 int* max_array[30];
 int log_table[100000];
 int N, L;
@@ -38,6 +39,7 @@ void make(int length, int* sequence) {
 		}
 	}
 }
+/*pdf*/
 
 void example() {
 	int s[] = {2,3,1,2,2,10,11,-2,9,10};

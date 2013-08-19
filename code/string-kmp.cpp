@@ -14,6 +14,7 @@ char* word;
 int F[MaxD+1];
 int D;
 
+/*pdf*/
 int step(int i, char c) {
 	if (i < D-1 && word[i+1] == c)
 		return i + 1;
@@ -38,6 +39,7 @@ void search(char* text) {
 		if (j == D-1) printf("%d\n", i);
 	}
 }
+/*pdf*/
 
 void kmp_demo() {
 	char pattern[] = "ABBAAAABBA";

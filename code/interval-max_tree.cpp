@@ -7,6 +7,7 @@ int interval_tree[101000], L;
 //Implementation of maximum interval tree,
 //0,..,L-2 inner nodes; L-1,..,2L-2 leaves
 
+/*pdf*/
 //Maximum of interval [a,b)
 int maximum(int a, int b) {
 	if (a >= b) return 0;
@@ -39,6 +40,7 @@ void make(int N, int* sequence) {
 	for (int i = L-2; i >= 0; i--) interval_tree[i] = max(interval_tree[2*i+1],
 		interval_tree[2*i+2]);
 }
+/*pdf*/
 
 void example() {
 	int s[] = {2,3,1,2,2,10,11,-2,9,10};

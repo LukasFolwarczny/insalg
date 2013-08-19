@@ -9,6 +9,7 @@
 long long F[14]; // factorial
 int T[14]; // tmp
 
+/*pdf*/
 void init() {
 	F[0] = 1LL;
 	for (int i = 1; i <= 13; i++) F[i] = i*F[i-1];
@@ -40,6 +41,7 @@ int* integer_to_permutation(int N, long long V) {
 	}
 	return out;
 }
+/*pdf*/
 
 // DEMO
 void permutation_demo() {

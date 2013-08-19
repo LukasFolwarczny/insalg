@@ -6,6 +6,7 @@ char *prime;
 
 // Find all primes less than N
 // Result is in the array prime, x is prime iff prime[x] == 1
+/*pdf*/
 void eratosthenes(int N) {
 	prime = (char*)calloc(N, sizeof(char));
 	FORI(i,2,N) prime[i] = 1;
@@ -16,6 +17,7 @@ void eratosthenes(int N) {
 		}
 	}
 }
+/*pdf*/
 
 // DEMO
 void eratosthenes_demo() {

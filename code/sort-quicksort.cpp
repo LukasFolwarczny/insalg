@@ -2,10 +2,11 @@
 // Lukas Folwarczny, 2013
 // http://atrey.karlin.mff.cuni.cz/~folwar/insalg/
 
-// Ordinary Quick Sort-
+// Ordinary Quick Sort
 // Time complexity: O(N log N) on average
 
 // Sort the array on positions l, l+1, ..., r-1
+/*pdf*/
 void quicksort(int* array, int l, int r) {
 	if (l < r) {
 		int bound = l;
@@ -18,8 +19,8 @@ void quicksort(int* array, int l, int r) {
 		quicksort(array, bound + 1, r);
 	}
 }
+/*pdf*/
 
-// DEMO
 void quicksort_demo() {
 	int array[] = {3, 7, 1, 2, 3, 100, 1010, -2, 11, 1, 33, 22};
 	FOR(i,12) printf("%d ", array[i]);

@@ -4,7 +4,7 @@
 // Weiszfeld's algorithm for geometric median approximation
 // Inspired by a Challenge24 2013 task.
 
-
+/*pdf*/
 double distance(double x1, double y1, double x2, double y2) {
 	return sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
 }
@@ -30,8 +30,7 @@ void geometric_median(int N, int iterations, double* X, double* Y, double &Xmed,
 	Xmed = AX[iterations%2];
 	Ymed = AY[iterations%2];
 }
-
-// DEMO
+/*pdf*/
 
 int N;
 double X[1000000], Y[1000000];

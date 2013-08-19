@@ -6,6 +6,7 @@
 // using the Median of Medians algorithm
 // Time complexity: O(N)
 
+/*pdf*/
 // Permutes the array on positions array[l] to array[r-1] with the
 // pivot
 // Return position of the pivot after rearrangement
@@ -48,8 +49,8 @@ int kth(int *array, int l, int r, int k) {
 	}
 
 }
+/*pdf*/
 
-// DEMO
 void kth_demo() {
 	int array[] = {1,6,1,2,3,8,11,10,87,12,13,14,15,17,18,19,23};
 	FOR(i,17) printf("%d\n", kth(array, 0, 17, i));
