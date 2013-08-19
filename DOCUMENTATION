@@ -1,0 +1,96 @@
+insalg - Documentation
+Lukáš Folwarczný, lfolwarczny[at]gmail[dot]com
+
+Up-to-date version of this document, as well as the whole project is
+available on the site: http://atrey.karlin.mff.cuni.cz/~folwar/insalg/
+
+------------
+About insalg
+------------
+
+
+
+-----
+Usage
+-----
+
+
+
+
+
+
+
+I believe that interesting part of this project is Booth's algorithm
+because the implementation here is in my opinion more lucid than the
+one in the original article or the one from Wikipedia.
+
+----------------------
+Implemented algorithms
+----------------------
+
+In the sake of lucidity, the algorithms are split into categories:
+Geometry, Number, Sort, Permutation, String, Heap, Interval
+
+template.cpp
+
+Geometry
+  geometry-geometric_median.cpp
+    A single function geometric_median runs given number of iterations of Weiszfeld's algorithm for
+    the approximation of geometric median.
+
+Number
+  number-eratosthenes.cpp
+    Eratosthenes siege running in O(n log log n) time.
+
+  number-euclid.cpp
+    Basic and extended Euclid algorithm.
+
+Sort
+  sort-quicksort.cpp
+    Ordinary quick sort implementation.
+
+  sort-kth_smallest.cpp
+    Computes the k-th element of the array in linear time using Median
+    of Medians algorithm.
+
+Permutation
+  permutation-bijection.cpp
+    Constructs the bijection between permutations of the length N and
+    numbers {0,1,...,N!-1}.
+
+    Before computing it is necessary to run the function init, which
+    precomputes the factorial numbers.
+
+    The functions integer_to_permutation and permutation_to_integer
+    provide the conversions.
+
+    Time complexity is O(N^2).
+
+Heap
+  heap-binary.cpp
+    Binary minimum heap. To use the heap, the function must be called.
+    make runs in O(N) time, operations delete_min and insert in O(log N).
+
+Interval
+  interval-max_tree.cpp
+
+  interval-max_array.cpp
+
+  interval-fenwick.cpp
+
+String
+  string-kmp.cpp
+    Knuth-Morris-Pratt algorithm. Failer function is computed with the
+    function build. The search of a given word is performed by the
+    function search.
+
+  string-minlexrot.cpp
+    Booth's algorithm for finding the lexicographically minimal
+    rotation of a string. Algorithm is an elegant modification of KMP.
+
+  string-aho_corasick.cpp
+
+Graph
+  graph-dfs.cpp
+
+  graph-tarjan_scc.cpp
