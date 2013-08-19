@@ -12,10 +12,10 @@ stack<int> S;
 
 void scc(int v);
 
-//Tarjan algorithm for finding strong components of graph
-//Same notation as in graph_dfs
-//Time complexity: O(|V|+|E|)
-//Output: Vertex v is part of SCC comp[v]
+// Tarjan algorithm for finding strong components of graph
+// Same notation as in graph_dfs
+// Time complexity: O(|V|+|E|)
+// Output: Vertex v is part of SCC comp[v]
 void find_sccs() {
 	FOR(i,N) {
 		if (!vis[i]) scc(i);
@@ -28,7 +28,7 @@ void scc(int v) {
 	backlink[v] = in[v];
 	S.push(v);
 
-	FOR(i,E[v].size())  {
+	FOR(i,(int)E[v].size())  {
 		int w = E[v][i];
 		if (!vis[w]) {
 			scc(w);
@@ -51,7 +51,7 @@ void scc(int v) {
 	out[v] = T++;	
 }
 
-void example() {
+void tarjan_scc_demo() {
 	N = 7;
 	E[0] = vector<int>(2,1);
 	E[0][1] = 5;
@@ -66,4 +66,6 @@ void example() {
 	FOR(n,N) printf("vertex %d in component %d\n", n, comp[n]);
 }
 
-int main() { example(); return 0; }
+#ifdef RUNDEMO
+int main() { tarjan_scc_demo(); return 0; }
+#endif
