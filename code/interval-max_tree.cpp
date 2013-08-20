@@ -2,13 +2,18 @@
 // Lukas Folwarczny, 2013
 // http://atrey.karlin.mff.cuni.cz/~folwar/insalg/
 
+
+// Maximum interval tree
+// The function make creates the tree in O(N) time.
+// The tree handles two queries (both in O(log N) time):
+//   maximum - compute the maximum of a given interval
+//   update - update an element on a given position
+
+// Indices: 0,..,L-2 inner nodes; L-1,..,2L-2 leaves
 int interval_tree[101000], L;
 
-//Implementation of maximum interval tree,
-//0,..,L-2 inner nodes; L-1,..,2L-2 leaves
-
 /*pdf*/
-//Maximum of interval [a,b)
+// Maximum of the interval [a,b)
 int maximum(int a, int b) {
 	if (a >= b) return 0;
 	int l = L + a - 1;
