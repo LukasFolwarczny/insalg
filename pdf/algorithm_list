@@ -32,7 +32,7 @@ string-kmp.cpp
 subsection:Lexicographically minimal rotation
 string-minlexrot.cpp
 subsection:Suffix array
-string_suffix-array.cpp
+string-suffix_array.cpp
 section:Graph
 subsection:DFS
 graph-dfs.cpp
