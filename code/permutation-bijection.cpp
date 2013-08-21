@@ -4,6 +4,7 @@
 
 // Constructs the bijection between permutations of the length N
 // and {0,...,N!-1}. Pemutations are ordered lexicographically.
+// The fucntion init must be run first.
 // Time complexity: O(N^2)
 
 long long F[14]; // factorial

@@ -1,4 +1,13 @@
 #include "template.cpp"
+// Lukas Folwarczny, 2013
+// http://atrey.karlin.mff.cuni.cz/~folwar/insalg/
+
+// Aho-Corasick algorithm
+// Based on the algorithm description in KSP Cookbook:
+// http://ksp.mff.cuni.cz/viz/kucharky/hledani-v-textu
+
+// This is an experimental feature. I want to rewrite one day,
+// I do not really believe in this implementation.
 
 #define WordLen 15
 
@@ -14,12 +23,7 @@ trie* root;
 trie* words_pos[10000];
 int active[10000], active_c;
 
-void build_trie() {
-
-}
-
 /*pdf*/
-//a-z
 void build(int words_count, char words[][WordLen]) {
 	N = words_count;
 	root = new trie();
@@ -42,11 +46,11 @@ void build(int words_count, char words[][WordLen]) {
 	active_c = N;
 
 	for (int p = 0; active_c; p++) {
-		printf("%d\n", p);
+		//printf("%d\n", p);
 		FOR(i,active_c) {
 			int w = active[i];
 			if (words[w][p] == '\0') {
-				printf("%s %d\n", words[w], words_pos[w]->d);
+				//printf("%s %d\n", words[w], words_pos[w]->d);
 				words_pos[w]->word = true;
 				active[i] = active[active_c-1];
 				active_c--;
@@ -54,7 +58,7 @@ void build(int words_count, char words[][WordLen]) {
 			}
 			else {
 				int c = words[w][p] - 'a';
-				printf("%d\n", c);
+				//printf("%d\n", c);
 				trie* parent = words_pos[w];
 				trie* c_node;
 				if (parent->sons[c] == NULL) {
@@ -78,7 +82,7 @@ void build(int words_count, char words[][WordLen]) {
 					c_node->back_pattern = c_node->link;
 				else c_node->back_pattern = c_node->link->back_pattern;
 				words_pos[w] = c_node;
-				printf("d:%d\n", c_node->d);
+				//printf("d:%d\n", c_node->d);
 			}
 		}
 	}
@@ -119,13 +123,6 @@ void search(char* text) {
 /*pdf*/
 
 int main() {
-	
-	/*char jehelnik[9][WordLen] = {"tar","arara", "ararat", "bar", "bara", "baraba", "ra", "rab",
-	"tar"};
-	printf("%s\n", jehelnik[7]);
-	build(2, jehelnik);
-	char* tlt = "araratararata";
-	search(tlt);*/
 	char jehelnik[9][WordLen] = {"arab","arara", "ararat", "bar", "bara", "baraba", "ra", "rab"};
 	printf("%s\n", jehelnik[7]);
 	build(8, jehelnik);

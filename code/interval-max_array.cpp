@@ -3,11 +3,11 @@
 // http://atrey.karlin.mff.cuni.cz/~folwar/insalg/
 
 // Maximum array
-// This array is created with the function O(N log N)
+// This array is created with the function make
 // with the complexity (time and space) O(N log N).
 // The array is immutable and computes the maximum of a given interval
 // in O(1) (it is in fact O(log log N), but this implementation uses
-// for integer constant number of operations.)
+// for integer constant number of operations).
 
 // The bithacks in maximum are a nice exercise.
 // I took it from: http://graphics.stanford.edu/~seander/bithacks.html

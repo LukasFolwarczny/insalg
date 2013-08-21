@@ -2,7 +2,6 @@
 // Lukas Folwarczny, 2013
 // http://atrey.karlin.mff.cuni.cz/~folwar/insalg/
 
-
 // Maximum interval tree
 // The function make creates the tree in O(N) time.
 // The tree handles two queries (both in O(log N) time):

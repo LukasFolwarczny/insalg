@@ -2,7 +2,7 @@
 // Lukas Folwarczny, 2013
 // http://atrey.karlin.mff.cuni.cz/~folwar/insalg/
 
-// Finds kth smallest (zero-based) element in given sequence
+// Finds k-th smallest (zero-based) element in given sequence
 // using the Median of Medians algorithm
 // Time complexity: O(N)
 

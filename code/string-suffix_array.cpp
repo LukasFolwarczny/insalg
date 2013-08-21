@@ -139,7 +139,6 @@ void suffix_array_demo() {
 	suffix_array(N, S, SA);
 	printf("Suffix array:\n");
 	FOR(i,N+1) printf("%d ", SA[i]);
-	printf("\n12 1 6 4 9 3 8 2 7 5 10 11 0");
 }
 
 #ifdef RUNDEMO
