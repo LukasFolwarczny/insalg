@@ -48,7 +48,8 @@ void insert(int v) {
 
 void make(int* array, int length) {
 	N = length;
-	FOR(i,N) heap[i] = array[i];
+	for (int i = 0; i < N; i++)
+	    heap[i] = array[i];
 	for (int p = (N-1)/2; p >= 0; p--) {
 		bubble_down(p);
 	}
@@ -62,7 +63,7 @@ void binary_heap_demo() {
 	printf("%d\n", get_min());
 	insert(-3);
 	printf("%d\n", get_min());
-	FOR(i,8) {
+	for (int i = 0; i < 8; i++) {
 		printf("%d\n", get_min());
 		delete_min();
 	}

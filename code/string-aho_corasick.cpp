@@ -28,7 +28,7 @@ void build(int words_count, char words[][WordLen]) {
 	N = words_count;
 	root = new trie();
 	root->d = 0;
-	FOR(i,N) { words_pos[i] = root; 
+	for (int i = 0; i < N; i++) { words_pos[i] = root;
 	trie *t = root;
 		for(int p = 0; words[i][p] != '\0'; p++) {
 					int c = words[i][p]-'a';
@@ -41,13 +41,13 @@ void build(int words_count, char words[][WordLen]) {
 				t = t->sons[c];
 		}
 	}
-	FOR(i,N)
+	for (int i = 0; i < N; i++)
 		active[i] = i;
 	active_c = N;
 
 	for (int p = 0; active_c; p++) {
 		//printf("%d\n", p);
-		FOR(i,active_c) {
+		for (int i = 0; i < active_c; i++) {
 			int w = active[i];
 			if (words[w][p] == '\0') {
 				//printf("%s %d\n", words[w], words_pos[w]->d);

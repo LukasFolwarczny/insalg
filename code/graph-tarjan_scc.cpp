@@ -18,7 +18,7 @@ void scc(int v);
 // Output: Vertex v is part of SCC comp[v]
 /*pdf*/
 void find_sccs() {
-	FOR(i,N) {
+	for (int i = 0; i < N; i++) {
 		if (!vis[i]) scc(i);
 	}
 }
@@ -29,7 +29,7 @@ void scc(int v) {
 	backlink[v] = in[v];
 	S.push(v);
 
-	FOR(i,(int)E[v].size())  {
+	for (int i = 0; i < (int)E[v].size(); i++)  {
 		int w = E[v][i];
 		if (!vis[w]) {
 			scc(w);
@@ -65,7 +65,8 @@ void tarjan_scc_demo() {
 	E[5] = vector<int>(1,6);
 	E[6] = vector<int>(1,5);
 	find_sccs();
-	FOR(n,N) printf("vertex %d in component %d\n", n, comp[n]);
+	for (int n = 0; n < N; n++)
+	    printf("vertex %d in component %d\n", n, comp[n]);
 }
 
 #ifdef RUNDEMO

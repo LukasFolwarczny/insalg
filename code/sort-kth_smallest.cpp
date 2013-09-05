@@ -15,7 +15,7 @@ int rearrange(int* array, int l, int r, int pivot) {
 	while (array[pivot_pos] != pivot) pivot_pos++;
 	swap(array[pivot_pos], array[l]);
 
-	FORI(i,l+1,r) {
+	for (int i = l+1; i < r; i++) {
 		if (array[i] < array[l]) {
 			swap(array[i], array[++bound]);
 		}
@@ -53,7 +53,8 @@ int kth(int *array, int l, int r, int k) {
 
 void kth_demo() {
 	int array[] = {1,6,1,2,3,8,11,10,87,12,13,14,15,17,18,19,23};
-	FOR(i,17) printf("%d\n", kth(array, 0, 17, i));
+	for (int i = 0; i < 17; i++)
+	    printf("%d\n", kth(array, 0, 17, i));
 }
 
 #ifdef RUNDEMO

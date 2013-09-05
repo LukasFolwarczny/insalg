@@ -17,14 +17,14 @@ void dfs(int v);
 // out[v] - time of departure from v
 /*pdf*/
 void dfs_graph() {
-	FOR(i,N)
+	for (int i = 0; i < N; i++)
 		if (!vis[i]) dfs(i);
 }
 
 void dfs(int v) {
 	vis[v] = 1;
 	in[v] = T++;
-	FOR(i,(int)E[v].size())  {
+	for (int i = 0; i < (int)E[v].size(); i++)  {
 		if (!vis[E[v][i]])
 			dfs(E[v][i]);
 	}
@@ -45,7 +45,7 @@ void dfs_demo() {
 	E[6] = vector<int>(1,5);
 	E[7] = vector<int>(1,8);
 	dfs_graph();
-	FOR(n,N) printf("vertex %d in %d out %d\n", n, in[n], out[n]);
+	for (int n = 0; n < N; n++) printf("vertex %d in %d out %d\n", n, in[n], out[n]);
 }
 #ifdef RUNDEMO
 int main() { dfs_demo(); return 0; }

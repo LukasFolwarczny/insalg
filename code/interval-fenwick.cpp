@@ -46,7 +46,8 @@ void fenwick_demo() {
 	add(5, 12);
 	add(2, 2);
 	add(2, 3);
-	FOR(i,8) printf("sum [0,..,%d]: %d\n", i-1, prefix_sum(i));
+	for (int i = 0; i < 8; i++)
+	    printf("sum [0,..,%d]: %d\n", i-1, prefix_sum(i));
 }
 
 #ifdef RUNDEMO

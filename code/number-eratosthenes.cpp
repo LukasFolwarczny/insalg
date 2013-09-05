@@ -9,8 +9,8 @@ char *prime;
 /*pdf*/
 void eratosthenes(int N) {
 	prime = (char*)calloc(N, sizeof(char));
-	FORI(i,2,N) prime[i] = 1;
-	FORI(i,2,N) {
+	for (int i = 2; i < N; i++) prime[i] = 1;
+	for (int i = 2; i < N; i++) {
 		if (prime[i]) {
 			for (int j = i * 2; j < N; j += i)
 				prime[j] = 0;

@@ -73,7 +73,7 @@ void suffix_array(int N, int *S, int *SA) {
 	radixsort_pass(smpl, tmp, S, N12, N);
 	
 	// Rename triples
-	FOR(i,N12+2) smpl[i] = 0;
+	for (int i = 0; i < N12 + 2; i++) smpl[i] = 0;
 	int rename = 1;
 	smpl[global_to_sample(N,tmp[0])] = 1;
 	for (int i = 1; i < N12; i++) {
@@ -138,7 +138,7 @@ void suffix_array_demo() {
 	int N = 12;
 	suffix_array(N, S, SA);
 	printf("Suffix array:\n");
-	FOR(i,N+1) printf("%d ", SA[i]);
+	for (int i = 0; i < N+1; i++) printf("%d ", SA[i]);
 }
 
 #ifdef RUNDEMO

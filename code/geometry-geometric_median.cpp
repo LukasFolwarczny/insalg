@@ -13,10 +13,10 @@ void geometric_median(int N, int iterations, double* X, double* Y, double &Xmed,
 &Ymed) {
 	double AX[2], AY[2];
 	AX[0] = (X[0]+X[1]) / 2, AY[0] = (Y[0]+Y[1])/2; // initial guess
-	FOR(it,iterations) {
+	for (int it = 0; it < iterations; it++) {
 		double numerator_x = 0, numerator_y = 0, denominator = 0;
 		int t = it % 2;
-		FOR(n,N) {
+		for (int n = 0; n < N; n++) {
 			double dist = distance(X[n], Y[n], AX[t], AY[t]);
 			if (dist != 0) {
     				numerator_x += X[n]/dist;
@@ -37,7 +37,7 @@ double X[1000000], Y[1000000];
 
 void geometric_median_demo() {
 	scanf("%d", &N);
-	FOR(i,N) {
+	for (int i = 0; i < N; i++) {
 		scanf("%lf %lf", &X[i], &Y[i]);
 	}
 	double RX, RY;

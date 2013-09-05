@@ -27,9 +27,8 @@ void build(char* pattern) {
 	word = pattern;
 	D = strlen(word);
 	F[0] = -1;
-	FORI(i,1,D) {
+	for (int i = 1; i < D; i++)
 		F[i] = step(F[i-1], word[i]);
-	}
 }
 
 void search(char* text) {

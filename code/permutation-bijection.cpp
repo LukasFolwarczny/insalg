@@ -19,7 +19,7 @@ void init() {
 // Return number of permutation P.
 long long permutation_to_integer(int N, int *P) {
 	long long V = 0;
-	FOR(i,N) {
+	for (int i = 0; i < N; i++) {
 		V += P[i] * F[N-i-1];
 		for (int j = i + 1; j < N; j++)
 			if (P[j] > P[i]) P[j]--;
@@ -29,8 +29,8 @@ long long permutation_to_integer(int N, int *P) {
 
 int* integer_to_permutation(int N, long long V) {
 	int *out = (int*)malloc(N*sizeof(int));
-	FOR(i,N) T[i] = 1;
-	FOR(i,N) {
+	for (int i = 0; i < N; i++) T[i] = 1;
+	for (int i = 0; i < N; i++) {
 		int k = 0;
 		while (V >= F[N-i-1])
 			k++, V -= F[N-i-1];
@@ -56,14 +56,14 @@ void permutation_demo() {
 	scanf("%d", &V);
 
 	int* v = integer_to_permutation(N, V);
-	FOR(i,N)
+	for (int i = 0; i < N; i++)
 		printf("%d ", v[i]);
 	
 	printf("\n--- Permutation to integer ---\n"
 	"Input the length of the permutation: ");
 	scanf("%d", &N);
 	printf("The permutation: ");
-	FOR(i,N)
+	for (int i = 0; i < N; i++)
 		scanf("%d", &P[i]);
 	printf("%lld\n", permutation_to_integer(N, P));
 }

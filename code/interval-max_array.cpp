@@ -40,15 +40,15 @@ void make(int length, int* sequence) {
 	L = 1;
 	int p = 1;
 	while (p < length) { p *= 2; L++; }
-	FOR(l,L) {
+	for (int l = 0; l < L; l++) {
 		max_array[l] = (int*)malloc(sizeof(int)*N);
 		if (l == 0) {
-			FOR(i,N) max_array[l][i] = sequence[i];	
+			for (int i = 0; i < N; i++)
+			    max_array[l][i] = sequence[i];
 		}
 		else {
-			FOR(i,N) {
+		    for (int i = 0; i < N; i++)
 				max_array[l][i] = max(max_array[l-1][i], max_array[l-1][i+(1 << (l-1))]);
-			}
 		}
 	}
 }
@@ -57,10 +57,12 @@ void make(int length, int* sequence) {
 void max_array_demo() {
 	int s[] = {2,3,1,2,2,10,11,-2,9,10};
 	int N = 10;
-	FOR(i,N) printf("%d ", s[i]);
+	for (int i = 0; i < N; i++)
+	    printf("%d ", s[i]);
 	printf("\n");
 	make(N, s);
-	FOR(i,N) FORI(j,i+1,N+1) printf("max [%d,%d):%d\n", i, j, maximum(i,j));
+	for (int i = 0; i < N; i++) for (int j = i + 1; j < N + 1; j++)
+	     printf("max [%d,%d):%d\n", i, j, maximum(i,j));
 }
 
 #ifdef RUNDEMO

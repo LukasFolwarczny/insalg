@@ -23,10 +23,10 @@ void quicksort(int* array, int l, int r) {
 
 void quicksort_demo() {
 	int array[] = {3, 7, 1, 2, 3, 100, 1010, -2, 11, 1, 33, 22};
-	FOR(i,12) printf("%d ", array[i]);
+	for (int i = 0; i < 12; i++) printf("%d ", array[i]);
 	quicksort(array, 0, 12);
 	printf("\nSorted array:\n");
-	FOR(i,12) printf("%d ", array[i]);
+	for (int i = 0; i < 12; i++) printf("%d ", array[i]);
 	printf("\n");
 }
 
