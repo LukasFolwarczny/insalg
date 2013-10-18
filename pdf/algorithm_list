@@ -8,6 +8,8 @@ subsection:Eratosthenes
 number-eratosthenes.cpp
 subsection:Euclid
 number-euclid.cpp
+subsection:Chinese
+number-chinese.cpp
 section:Sort
 subsection:$k$-th smallest
 sort-kth_smallest.cpp
