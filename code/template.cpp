@@ -20,9 +20,9 @@ using namespace std;
 
 #define FOR(i,N) for (int i = 0; i < (N); i++)
 #define FORI(i, a, b) for (int i = (a); i < (b); i++)
-#define FORD(i, b, a) for (int i = (b) - 1; i >= a; i++)
+#define FORD(i, b, a) for (int i = (b) - 1; i >= a; i--)
 #define DP(arg...) fprintf(stderr, ## arg) //COMPILER SPECIFIC!!!
 
 
-typedef long long ll;		
+typedef long long ll;
 /*pdf*/
