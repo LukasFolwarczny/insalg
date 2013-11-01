@@ -3,130 +3,121 @@
 // http://atrey.karlin.mff.cuni.cz/~folwar/insalg/
 
 // Aho-Corasick algorithm
-// Based on the algorithm description in KSP Cookbook:
-// http://ksp.mff.cuni.cz/viz/kucharky/hledani-v-textu
 
-// This is an experimental feature. I want to rewrite one day,
-// I do not really believe in this implementation.
-
-#define WordLen 15
-
-int N;
-struct trie {
-	trie *sons[26], *parent, *link, *back_pattern;
-	bool word;
-	char z;
-	int d;
-};
-
-trie* root;
-trie* words_pos[10000];
-int active[10000], active_c;
+// Alphabet L0..LL, number of letters is LN
+#define L0 'a'
+#define LL 'z'
+#define LN 26
 
 /*pdf*/
-void build(int words_count, char words[][WordLen]) {
-	N = words_count;
-	root = new trie();
-	root->d = 0;
-	for (int i = 0; i < N; i++) { words_pos[i] = root;
-	trie *t = root;
-		for(int p = 0; words[i][p] != '\0'; p++) {
-					int c = words[i][p]-'a';
-				if (t->sons[c] == NULL) {
-					t->sons[c] = new trie(); 
-					t->sons[c]->parent = t;
-					t->sons[c]->z = c+'a';
-					t->sons[c]->d = t->d+1;
-				}
-				t = t->sons[c];
+// State of the automaton
+struct S {
+	// Forward edges, backward edge, shortcut backward edge, tree parent
+	S * F[LN], * B, * SB, * P;
+	bool W; // W = true mean a word ends here
+	char C;
+} * root;
+
+int N, max_word_len;
+
+S * step(S * s, char c) {
+	if (s->F[c-L0] != NULL)
+		return s->F[c-L0];
+	if (s != root)
+		return step(s->B, c);
+	return root;
+}
+
+void build(int patterns_count, char ** patterns) {
+	N = patterns_count;
+	root = new S();
+	root->B = root;
+	root->SB = root;
+
+	for (int i = 0; i < N; i++) {
+		S * t = root;
+		int p; int c;
+		for (p = 0; (c = patterns[i][p]) != '\0'; p++) {
+			if (t->F[c-L0] == NULL) {
+				t->F[c-L0] = new S();
+				t->F[c-L0]->P = t;
+				t->F[c-L0]->C = c;
+			}
+			t = t->F[c-L0];
+		}
+		max_word_len = max(max_word_len, p);
+		t->W = true;
+	}
+
+	queue<S*> Q;
+	for (int i = 0; i < LN; i++) {
+		S * s = root->F[i];
+		if (s != NULL) {
+			s->B = root;
+			s->SB = root;
+			Q.push(s);
 		}
 	}
-	for (int i = 0; i < N; i++)
-		active[i] = i;
-	active_c = N;
 
-	for (int p = 0; active_c; p++) {
-		//printf("%d\n", p);
-		for (int i = 0; i < active_c; i++) {
-			int w = active[i];
-			if (words[w][p] == '\0') {
-				//printf("%s %d\n", words[w], words_pos[w]->d);
-				words_pos[w]->word = true;
-				active[i] = active[active_c-1];
-				active_c--;
-				i--; //to the previos, can even preceed .begin
-			}
-			else {
-				int c = words[w][p] - 'a';
-				//printf("%d\n", c);
-				trie* parent = words_pos[w];
-				trie* c_node;
-				if (parent->sons[c] == NULL) {
-					parent->sons[c] = new trie(); 
-					parent->sons[c]->parent = parent;
-					parent->sons[c]->z = c+'a';
-					parent->sons[c]->d = parent->d+1;
-				}
-				c_node = parent->sons[c];
-				if (parent == root) c_node->link = root;
-				else {
-					trie* target = parent->link;
-					while ((target != root) && target->sons[c] == NULL) {
-						target = target->link;
-					}
-					if (target->sons[c] != NULL)
-						c_node->link = target->sons[c];
-					else c_node->link = root;
-				}
-				if (c_node->link->word)
-					c_node->back_pattern = c_node->link;
-				else c_node->back_pattern = c_node->link->back_pattern;
-				words_pos[w] = c_node;
-				//printf("d:%d\n", c_node->d);
+	while (!Q.empty()) {
+		S * t = Q.front(); Q.pop();
+		for (int i = 0; i < LN; i++) {
+			S * s = t->F[i];
+			if (s != NULL) {
+				S * b = step(t->B, L0+i);
+				s->B = b;
+				if (b->W)
+					s->SB = b;
+				else
+					s->SB = b->SB;
+					Q.push(s);
 			}
 		}
 	}
 }
 
-void search(char* text) {
-	trie* pos = root;
+void search(char * text) {
+	S * state = root;
+	char * out = (char *)malloc((max_word_len+1) * sizeof(char));
+	out[max_word_len] = '\0';
+
 	for (int p = 0; text[p] != '\0'; p++) {
-		int c = text[p] - 'a';
-		while (pos != root && (pos->sons[c]) == NULL) {
-			pos = pos->link;
-		}
-		if (pos->sons[c] != NULL)
-			pos = pos->sons[c];
-		if (pos->word) {
-			printf("Pozice: %d\n", p);
-			trie* x = pos;
-			while (x!=root)
-			{
-				printf("%c", x->z);
-				x = x->parent;
-			}
-			printf("\n");
-		}
-		else if (pos->back_pattern != NULL) {
-			printf("Pozice: %d\n", p);
-			trie* x = pos->back_pattern;
-			while (x!=root)
-			{
-				printf("%c", x->z);
-				x = x->parent;
-			}
-			printf("\n");
+		state = step(state, text[p]);
 
+		S * found = state;
+		if (!state->W)
+			found = state->SB;
+
+		while (found->W) {
+			S * s = found;
+			int k = max_word_len;
+			while (s != root) {
+				out[--k] = s->C;
+				s = s->P;
+			}
+			printf("Position: %d Word: %s\n", p, out + k);
+			found = found->SB;
+			if (found == NULL) DP("SHIT\n");
 		}
 	}
+	free(out);
 }
 /*pdf*/
 
-int main() {
-	char jehelnik[9][WordLen] = {"arab","arara", "ararat", "bar", "bara", "baraba", "ra", "rab"};
-	printf("%s\n", jehelnik[7]);
-	build(8, jehelnik);
+void aho_corasick_demo() {
+	int patterns_number = 8;
+	char * patterns[] = {"arab","arara", "ararat", "bar", "bara", "baraba", "ra", "rab"};
+
+	printf("Patterns:\n");
+	for (int i = 0; i < patterns_number; i++)
+		printf("%s\n", patterns[i]);
+
+	build(patterns_number, patterns);
 	char* tlt = "barabararat";
+	printf("Text: %s\n", tlt);
 	search(tlt);
-	return 0;
 }
+
+#ifdef RUNDEMO
+int main() { aho_corasick_demo(); return 0; }
+#endif
