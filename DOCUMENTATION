@@ -84,7 +84,7 @@ This overview tells you what to expect from each file, more details
 are in the .cpp files.
 
 In the sake of lucidity, the algorithms are split into categories:
-Geometry, Number, Sort, Permutation, String, Heap, Interval
+Geometry, Number, Sort, Permutation, String, Heap, Interval, Flow
 
 template.cpp
   A basic code that is included in all other codes.
@@ -170,3 +170,7 @@ Graph
   graph-tarjan_scc.cpp
     The Tarjan's algorithm for the identification of strongly
     connected components.
+
+Flow
+	flow-ford_fulkerson.cpp
+		Standard Ford-Fulkerson algorithm with BFS.
