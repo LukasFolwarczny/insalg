@@ -9,15 +9,17 @@
 
 long long F[14]; // factorial
 int T[14]; // tmp
+bool init_run;
 
 /*pdf*/
 void init() {
-	F[0] = 1LL;
+	F[0] = 1LL; init_run = true;
 	for (int i = 1; i <= 13; i++) F[i] = i*F[i-1];
 }
 
 // Return number of permutation P.
 long long permutation_to_integer(int N, int *P) {
+	if (!init_run) init();
 	long long V = 0;
 	for (int i = 0; i < N; i++) {
 		V += P[i] * F[N-i-1];
@@ -28,6 +30,7 @@ long long permutation_to_integer(int N, int *P) {
 }
 
 int* integer_to_permutation(int N, long long V) {
+	if (!init_run) init();
 	int *out = (int*)malloc(N*sizeof(int));
 	for (int i = 0; i < N; i++) T[i] = 1;
 	for (int i = 0; i < N; i++) {
@@ -46,7 +49,6 @@ int* integer_to_permutation(int N, long long V) {
 
 // DEMO
 void permutation_demo() {
-	init();
 	int P[14];
 	int N, V;
 	printf("--- Integer to permutation ---\n");
