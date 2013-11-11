@@ -16,7 +16,7 @@ int get_min() {
 }
 
 void bubble_down(int p) {
-	while (p <= (N-1)/2) {
+	while (2*p + 1 < N) {
 		int min = 2*p + 1;
 		if (2*p + 2 < N && heap[min] > heap[2*p + 2])
 			min = 2*p + 2;
