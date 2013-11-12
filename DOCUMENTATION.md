@@ -199,3 +199,9 @@ connected components.
 ###### flow-ford_fulkerson.cpp
 
 The standard Ford-Fulkerson algorithm with BFS.
+
+###### flow-ford_goldberg.cpp
+
+The Goldberg (also known as push-relabel) algorithm, finds max flow in O(N^3).
+
+This implementation is only an alpha version, I will update soon.

@@ -43,3 +43,5 @@ graph-tarjan_scc.cpp
 section:Flow
 subsection:Ford-Fulkerson
 flow-ford_fulkerson.cpp
+subsection:Goldberg
+flow-goldberg.cpp
